@@ -19,13 +19,13 @@ module Harvest
 
           addr_type = opts[:address_type] || :public
           type      = opts[:type] || :linux
-          ip_addr   = i.send("#{addr_type}_ip_address".to_sym)
 
           {
-            type:       type,
-            host:       host,
-            host_name:  ip_addr,
-            delegator:  i
+            type:         type,
+            name:         host,
+            host_name:    i.send("#{addr_type}_ip_address".to_sym),
+            instance_id:  i.instance_id,
+            aws:          i
           }
         end
       end
